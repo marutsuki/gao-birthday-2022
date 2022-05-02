@@ -1,0 +1,49 @@
+#countdown {
+    width: inherit;
+    height: inherit;
+
+    display: grid;
+    place-items: center;
+    
+}
+
+#countdown .fade {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    animation: fade ease-out 0.5s;
+}
+
+#countdown h1 {
+    font-weight: 100;
+    color: rgba(255, 255, 255, 1);
+    position: absolute;
+    font-size: var(--text-cant-get-bigger-than-this);
+    margin: auto;
+    animation: fade-out cubic-bezier(0.55, 0.055, 0.675, 0.19) 1s forwards;
+}
+.countdown-slide {
+    height: 75vh;
+    width: 75wh;
+    object-fit: cover;
+    animation: fade-in cubic-bezier(0.075, 0.82, 0.165, 1) 0.25s forwards;
+    box-shadow: 1px 1px 2px 2px black;
+}
+@keyframes fade-out {
+    0% {
+        color: rgba(255, 255, 255, 1);
+    }
+    100% {
+        color: rgba(0, 0, 0, 0);
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0%;
+    }
+    100% {
+        opacity: 100%;
+    }
+}

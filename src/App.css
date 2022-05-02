@@ -1,0 +1,64 @@
+:root {
+  --font: font-family: 'Quicksand', sans-serif;
+  
+  --text-cant-get-bigger-than-this: 30rem;
+  --text-even-more-massive: 10rem;
+  --text-massive: 5rem;
+  --text-large: 2rem;
+  --text-med: 1.5rem;
+  --text-small: 1rem;
+}
+.App {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+
+  display: grid;
+  place-items: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fade {
+  0% {
+      background-color: rgba(0, 0, 0, 1);
+      z-index: 1;
+  }
+  100% {
+      background-color: rgba(0, 0, 0, 0);
+      z-index: -1;
+  }
+}
