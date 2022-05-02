@@ -57,10 +57,7 @@ function HappyBirthday({ images }) {
         
         <div className="snow"/>
         <div className="fade"/>
-
-        <button className="down-button">
-            
-        </button>
+        
     </section>
 }
 
