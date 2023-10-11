@@ -6,35 +6,33 @@ function Countdown({ initBeat, beats, bpm, onDone, images }) {
     const interval = useRef(null);
     const firstBeat = useRef(false);
     useEffect(() => {
-        if (!audio) {
-            return;
-        }
-        audio.load();
-
+        audio.volume = ticks / (beats + 1);
         if (ticks === beats) {
             clearInterval(interval.current);
             onDone();
             return;
         }
+    }, [ticks])
+    useEffect(() => {
+        if (!audio) {
+            return;
+        }
+        audio.load();
+
         if (firstBeat.current) {
             return;
         }
         const updateTime = () => {
-            console.log('update time')
             if (ticks === beats) {
                 return;
             }
-            console.log(ticks)
             setTicks(ticks => ticks + 1);
         };
         if (initBeat) {
 
             setTimeout(() => {
-                audio.volume = ticks / (beats + 1);
                 audio.play();
-                console.log('timeout')
                 interval.current = setInterval(() => {
-                    console.log('interval')
                     audio.volume = ticks / (beats + 1);
                     audio.play().catch(err => {
                         console.log(err);

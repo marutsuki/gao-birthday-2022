@@ -3,8 +3,8 @@ import "./HappyBirthday.scss";
 
 function HappyBirthday({ images }) {
 
-    const [clickAudio, setClickAudio] = useState(new Audio("./assets/clap.wav"));
-    const [holdAudio, setHoldAudio] = useState(new Audio("./assets/holdclap.wav"));
+    const [clickAudio, setClickAudio] = useState(new Audio("/clap.wav"));
+    const [holdAudio, setHoldAudio] = useState(new Audio("/holdclap.wav"));
     const firstRender = useRef(true);
     const imageQueueReducer = (state, action) => {
         return { 
@@ -43,12 +43,9 @@ function HappyBirthday({ images }) {
     }, [dispatch]);
     
     useEffect(() => {
-        if (firstRender.current) {
-            firstRender.current = false;
-            return;
-        }
         setTimeout(() => {
             changeMedia();
+            console.log('change media')
         }, images[imageState.current][1]);
     }, [imageState, changeMedia, images]);
     return <section id="happy-birthday">
