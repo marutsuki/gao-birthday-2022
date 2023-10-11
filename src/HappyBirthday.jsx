@@ -3,8 +3,8 @@ import "./HappyBirthday.scss";
 
 function HappyBirthday({ images }) {
 
-    const [clickAudio, setClickAudio] = useState(new Audio("/clap.wav"));
-    const [holdAudio, setHoldAudio] = useState(new Audio("/holdclap.wav"));
+    const [clickAudio, setClickAudio] = useState(new Audio("./assets/clap.wav"));
+    const [holdAudio, setHoldAudio] = useState(new Audio("./assets/holdclap.wav"));
     const firstRender = useRef(true);
     const imageQueueReducer = (state, action) => {
         return { 

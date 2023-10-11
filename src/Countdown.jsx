@@ -6,7 +6,11 @@ function Countdown({ initBeat, beats, bpm, onDone, images }) {
     const interval = useRef(null);
     const firstBeat = useRef(false);
     useEffect(() => {
-        let _tick = 1;
+        if (!audio) {
+            return;
+        }
+        audio.load();
+
         if (ticks === beats) {
             clearInterval(interval.current);
             onDone();
@@ -16,19 +20,22 @@ function Countdown({ initBeat, beats, bpm, onDone, images }) {
             return;
         }
         const updateTime = () => {
-            if (ticks == beats) {
+            console.log('update time')
+            if (ticks === beats) {
                 return;
             }
+            console.log(ticks)
             setTicks(ticks => ticks + 1);
-            _tick++;
         };
         if (initBeat) {
 
             setTimeout(() => {
-                audio.volume = _tick / (beats + 1);
+                audio.volume = ticks / (beats + 1);
                 audio.play();
+                console.log('timeout')
                 interval.current = setInterval(() => {
-                    audio.volume = _tick / (beats + 1);
+                    console.log('interval')
+                    audio.volume = ticks / (beats + 1);
                     audio.play().catch(err => {
                         console.log(err);
                     });
@@ -42,12 +49,11 @@ function Countdown({ initBeat, beats, bpm, onDone, images }) {
                 updateTime();
             }, bpm);
         }
-        audio.load();
         firstBeat.current = true;
         return () => {
             clearInterval(interval.current);
         }
-    }, [ticks]);
+    }, [audio]);
 
     return <section key = { ticks + "tick" } id="countdown">
         <div className={`fade`}/>
